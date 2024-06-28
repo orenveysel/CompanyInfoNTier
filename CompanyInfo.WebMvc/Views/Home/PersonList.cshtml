@@ -1,0 +1,29 @@
+﻿@using CompanyInfo.WebMvc.Models
+
+@model List<Person> // bu sayafanin modelini belirler
+
+<table border="1">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>AdSoyad</td>
+            <td>Gsm</td>
+            <td>Sehir</td>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+       @foreach(var person in Model)
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.AdSoyad</td>
+                <td>@person.Gsm</td>
+                <td>@person.Sehir</td>
+                
+
+            </tr>
+        }
+    </tbody>
+</table>

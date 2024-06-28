@@ -1,0 +1,31 @@
+﻿@model List<TedarikciCheckBoxVM>
+@{
+    Tedarikci tedarikci = ViewBag.Tedarikci as Tedarikci;
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3>@tedarikci.SirketAdi</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="TedarikciyeUrunEkle" method="post">
+
+            <ul class="list-group">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <li class="list-group-item">
+                        <input type="checkbox" asp-for="@Model[i].IsChecked" />@Model[i].LabelName
+                    </li>
+                    <input type="hidden" asp-for="@Model[i].Id" />
+                    <input type="hidden" asp-for="@Model[i].TedarikciId" />
+
+                }
+
+
+
+            </ul>
+            <button class="btn btn-primary" type="submit">Kaydet</button>
+        </form>
+    </div>
+</div>

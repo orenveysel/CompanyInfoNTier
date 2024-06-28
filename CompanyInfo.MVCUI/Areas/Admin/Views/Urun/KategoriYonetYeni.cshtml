@@ -1,0 +1,63 @@
+﻿@model List<CheckBoxVM>
+@{
+
+    var urun = ViewBag.Urun as Urun;
+}
+<div class="card">
+    <div class="card-header">
+        <h3>@urun.UrunAdi</h3>
+    </div>
+    <div class="card-body">
+
+        <form asp-action="KategoriYonetYeni" asp-controller="Urun" method="post">
+
+            <ul>
+                @for (int index = 0; index < Model.Count; index++)
+                {
+                    <li>
+                    <input type="checkbox" asp-for="@Model[index].IsChecked" class="form-check-input" />
+                    <label class="form-check-label" asp-for="@Model[index].IsChecked">
+                        @Model[index].LabelName
+                    </label>
+                    <input type="hidden" asp-for="@Model[index].Id" />
+                    <input type="hidden" asp-for="@Model[index].LabelName" />
+                    <input type="hidden" asp-for="@Model[index].EntityId" />
+                    </li>
+                }
+
+
+                @*  Listeyi Foreach ile donmeyin. For ile donun
+                    
+                @foreach (CheckBoxVM item in Model)
+                {
+
+                    <input type="hidden" asp-for="@item.UrunId" />
+                    <input type="hidden" asp-for="@item.LabelName" />
+
+                    if (item.IsChecked)
+                    {
+                        <li>
+                            <input type="checkbox" 
+                                value="@item.Id" 
+                                checked 
+                                asp-for="@item.IsChecked" />@item.LabelName
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li> <input type="checkbox" asp-for="@item.IsChecked"  value="@item.Id" />@item.LabelName</li>
+                    }
+
+                } *@
+            </ul>
+            <button class="btn btn-success" id="myBtn" type="submit">Kaydet</button>
+
+        </form>
+
+    </div>
+
+    <div class="card-footer">
+        <button class="btn btn-success" id="myBtn">Secilenleri Goster</button>
+    </div>
+</div>

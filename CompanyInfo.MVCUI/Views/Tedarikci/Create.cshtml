@@ -1,0 +1,35 @@
+﻿@model TedarikciInsertVM
+
+<div class="card">
+    <div class="card-header">
+        <h3>Yeni Kategori Ekleme</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SirketAdi" class="control-label"></label>
+                <input asp-for="SirketAdi" class="form-control" />
+                <span asp-validation-for="SirketAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VergiNo" class="control-label"></label>
+                <input asp-for="VergiNo" class="form-control" />
+                <span asp-validation-for="VergiNo" class="text-danger"></span>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-success">Kaydet</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

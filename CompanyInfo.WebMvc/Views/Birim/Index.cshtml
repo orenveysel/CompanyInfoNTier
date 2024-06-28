@@ -1,0 +1,29 @@
+﻿
+@model List<Birim> 
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Birim Adi</td>
+            <td>Kayit Olusturma Zamani</td>
+           
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var birim in Model)
+        {
+            <tr>
+                <td>@birim.Id</td>
+                <td>@birim.BirimAdi</td>
+                <td>@birim.CreateDate</td>
+               
+
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,94 @@
+﻿@model UserInsertVM
+
+<div class="col-xxl">
+    <div class="card mb-4">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">Yeni Kullanici Ekle</h5>
+           
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" asp-for="@Model.Ad">Ad</label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
+                            <input  class="form-control" asp-for="@Model.Ad" placeholder="Adinizi Giriniz"/>
+                            <span asp-validation-for="@Model.Ad"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" asp-for="@Model.Soyad">Soyad</label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-buildings"></i></span>
+                            <input  class="form-control" placeholder="Soyadinizi Giriniz" asp-for="@Model.Soyad"/>
+                            <span asp-validation-for="@Model.Soyad"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" asp-for="@Model.Email">Email</label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                            <input class="form-control" placeholder="birisi@example.com" asp-for="@Model.Email" />
+                            <span id="basic-icon-default-email2" class="input-group-text">abc@example.com</span>
+                            <span asp-validation-for="@Model.Email"></span>
+                        </div>
+                        @* <div class="form-text">You can use letters, numbers &amp; periods</div> *@
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" asp-for="@Model.Gsm">Gsm</label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                            <input class="form-control" placeholder="Cep Telefonu Giriniz" asp-for="@Model.Gsm" />
+                            
+                            <span asp-validation-for="@Model.Gsm"></span>
+                        </div>
+                        @* <div class="form-text">You can use letters, numbers &amp; periods</div> *@
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 form-label" asp-for="@Model.Password">Password</label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                           @*  <span  class="input-group-text"><i class="bx bx-phone"></i></span> *@
+                            <input class="form-control " asp-for="@Model.Password">
+                            <span asp-validation-for="@Model.Password"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 form-label" asp-for="@Model.RePassword">Re Password</label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            @*  <span  class="input-group-text"><i class="bx bx-phone"></i></span> *@
+                            <input class="form-control " asp-for="@Model.RePassword">
+                            <span asp-validation-for="@Model.RePassword"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" asp-for="@Model.UserImage">Image</label>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-merge">
+                            
+                            <input class="form-control"  asp-for="@Model.UserImage" />
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

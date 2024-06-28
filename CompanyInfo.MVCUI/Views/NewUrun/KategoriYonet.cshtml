@@ -1,0 +1,80 @@
+﻿@model KategoriYonetVM
+
+<div class="card">
+    <div class="card-header">
+        <h3>@Model.Urun.UrunKodu  @Model.Urun.UrunAdi</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="KategoriYonet" asp-controller="Urun" method="post">
+
+
+            <ul class="list-group">
+               
+
+                @foreach (var kategori in Model.Urun.Kategoriler)
+                {
+
+                    <li class="list-group-item">
+                        <input type="checkbox" value="@kategori.Id.ToString()"
+                               checked />@kategori.KategoriAdi
+                    </li>
+                
+                }
+               
+                @{
+                    IEnumerable<Kategori> listeFarki = Model.Kategoriler.Except<Kategori>(Model.Urun.Kategoriler);
+                     string str= "";
+                }
+
+
+                @* @for(int i=0;i<Model.Kategoriler.Count;i++)
+                {
+
+                    foreach(var item in Model.Urun.Kategoriler)
+                    {
+                        if(item.Id==Model.Kategoriler[i].Id)
+                        {
+                            <li class="list-group-item">
+                                <input type="checkbox" value="@Model.Kategoriler[i].Id.ToString()"
+                                        checked />@Model.Kategoriler[i].KategoriAdi
+                            </li>
+                        }
+                        
+                    }
+                    <li class="list-group-item">
+                        <input type="checkbox" value="@Model.Kategoriler[i].Id.ToString()" />@Model.Kategoriler[i].KategoriAdi
+                    </li>
+                } *@
+
+
+
+
+                
+            </ul>
+            <butazcton class="btn btn-success" id="myBtn" type="submit">Kaydet</butazcton>
+
+        </form>
+
+    </div>
+
+    <div class="card-footer">
+        <button class="btn btn-success" id="myBtn">Secilenleri Goster</button>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#myBtn").click(function () {
+
+                let secilenler = $("input[checked]");
+                for (let i = 0; secilenler.length; i++) {
+                    console.log(secilenler[i].value)
+                };
+            });
+
+        });
+    </script>
+}

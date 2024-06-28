@@ -1,0 +1,31 @@
+﻿@model List<KategoriCheckBoxVM>
+@{
+    Kategori kategori = ViewBag.Kategori as Kategori;
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3>@kategori.KategoriAdi</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="KategoriyeUrunEkle"  method="post">
+            
+        <ul class="list-group">
+        @for(int i=0;i<Model.Count;i++)
+            {
+                <li class="list-group-item">
+                    <input type="checkbox" asp-for="@Model[i].IsChecked"/>@Model[i].LabelName
+                 </li>
+                 <input type="hidden" asp-for="@Model[i].Id"/>
+                <input type="hidden" asp-for="@Model[i].KategoriId" />
+
+            }
+
+
+
+        </ul>
+        <button class="btn btn-primary" type="submit">Kaydet</button> 
+        </form>
+    </div>
+</div>

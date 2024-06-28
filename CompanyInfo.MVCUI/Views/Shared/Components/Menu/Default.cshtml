@@ -1,0 +1,37 @@
+﻿@using CompanyInfo.Entities.DbContexts
+@model List<Menu>
+@{
+    var parentMenuler = Model.Where(p => p.ParentId == null).ToList();
+
+    string str = "";
+}
+
+@foreach (var menu in parentMenuler)
+{
+    <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-layout"></i>
+            <div data-i18n="@menu.Name">@menu.Name</div>
+        </a>
+        @{
+           
+            var altMenuler = Model.Where(p => p.ParentId == menu.Id).ToList(); if (altMenuler.Count > 0)
+            {
+                <ul class="menu-sub">
+
+                    @foreach (var altMenu in altMenuler)
+                    {
+                        <li class="menu-item">
+                            <a asp-action="@altMenu.ActionName" asp-controller="@altMenu.ControllerName" asp-area="@altMenu.Area" class="menu-link">
+                                <div data-i18n="@altMenu.Name">@altMenu.Name</div>
+                            </a>
+                        </li>
+
+                    }
+                </ul>
+
+
+            }
+        }
+    </li>
+}

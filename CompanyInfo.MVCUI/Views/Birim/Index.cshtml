@@ -1,0 +1,32 @@
+﻿@model List<Birim>
+
+
+<a class="btn btn-primary" asp-action="Create" asp-controller="Birim">Yeni Kayit</a>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Birim Adi</td>
+            <td>Kayit Olusturma Zamani</td>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var birim in Model)
+        {
+            <tr>
+                <td>@birim.Id</td>
+                <td>@birim.BirimAdi</td>
+                <td>@birim.CreateDate</td>
+                <td>
+                    <a class="btn btn-success" asp-action="Update" asp-route-id="@birim.Id">Guncelle</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@birim.Id">Sil</a>
+                </td>
+               
+
+            </tr>
+        }
+    </tbody>
+</table>

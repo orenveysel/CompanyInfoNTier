@@ -1,0 +1,59 @@
+﻿@model Urun
+
+<div class="card">
+    <div class="card-header">
+        <h3>@Model.UrunKodu  @Model.UrunAdi</h3>
+    </div>
+    <div class="card-body">
+        <form  asp-action="KategoriYonet" asp-controller="Urun" method="post">
+            
+        
+        <ul class="list-group">
+            @foreach (Kategori kat in ViewBag.Kategoriler)
+            {
+
+                if(Model.Kategoriler.Any(p=>p.KategoriAdi==kat.KategoriAdi))
+                {
+                    <li class="list-group-item">
+                        <input type="checkbox" checked value="@kat.Id"/>@kat.KategoriAdi
+                    </li>
+                }
+                else
+                {
+
+                    <li class="list-group-item">
+                        <input type="checkbox" value="@kat.Id" />@kat.KategoriAdi
+                    </li>
+                }
+                
+
+
+            }
+        </ul>
+            <butazcton class="btn btn-success" id="myBtn" type="submit">Kaydet</butazcton>
+
+        </form>
+
+    </div>
+
+    <div class="card-footer">
+        <button class="btn btn-success" id="myBtn">Secilenleri Goster</button>
+    </div>
+</div>
+
+@section Scripts
+{
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#myBtn").click(function () {
+
+            let secilenler = $("input[checked]");
+            for (let i = 0; secilenler.length; i++) { 
+               console.log(secilenler[i].value)
+            };
+        });
+
+    });
+</script>
+}

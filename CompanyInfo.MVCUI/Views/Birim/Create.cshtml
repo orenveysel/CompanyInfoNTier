@@ -1,0 +1,11 @@
+﻿@model Birim
+
+<form asp-action="Create" method="post">
+    
+    <div class="mb-3 form-check">
+        <label class="form-text-label" asp-for="BirimAdi">BirimAdi</label>
+        <input type="text" class="form-text-input" asp-for="BirimAdi">
+       
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>
